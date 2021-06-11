@@ -23,6 +23,7 @@ export const NavBar: React.FC<NavBarProps> = React.forwardRef(function NavBar(
       flexWrap="wrap"
       alignItems="center"
       justifyContent="space-between"
+      bg="#f8f9fa"
       py="0.5rem"
       {...props}
     >

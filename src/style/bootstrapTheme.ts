@@ -33,6 +33,12 @@ export const bootstrapTheme = {
 
   lineHeights: Object.assign(defaultTheme.lineHeights, {
     headings: '1.2rem',
+    h6: '1.2rem',
+    h5: '1.25rem',
+    h4: 'calc((1.275rem + .3vw) * 1.2)',
+    h3: 'calc((1.275rem + .6vw) * 1.2)',
+    h2: 'calc((1.275rem + .9vw) * 1.2)',
+    h1: 'calc((1.275rem + 1.5vw) * 1.2)'
   }),
 
   screens: Object.assign(defaultTheme.screens, {

@@ -1,7 +1,7 @@
-import { x } from '@xstyled/styled-components'
+import { SystemProps, x } from '@xstyled/styled-components'
 import React from 'react'
 
-export type ContainerProps = typeof x.div.defaultProps & {
+export type ContainerProps = SystemProps & {
   fluid?: boolean
 }
 

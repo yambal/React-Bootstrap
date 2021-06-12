@@ -1,30 +1,55 @@
-import { x } from '@xstyled/styled-components'
+import styled, { SystemProps, x } from '@xstyled/styled-components'
+import { readableColor } from 'polished'
 import React from 'react'
+import { bsReadableColor, ColorNameVariants, boxVariant } from '../style/colorNames'
 import { Container } from './'
 
-export type NavBarProps = typeof x.nav.defaultProps & {
+export type NavBarProps = SystemProps & ColorNameVariants & {
   fluid?: boolean
+  fixedTop?: boolean
+  fixedBottom?: Boolean
 }
 
+const NavBarBox = styled.navBox<ColorNameVariants>`
+  ${props => props.primary && boxVariant(props)}
+`
 
 export const NavBar: React.FC<NavBarProps> = React.forwardRef(function NavBar(
   {
     children,
     fluid,
+    fixedTop,
+    fixedBottom,
     ...props
   },
   ref
 ){
   return (
-    <x.nav
+    <NavBarBox
       ref={ref}
-      position="relative"
+      position={
+        (fixedTop || fixedBottom)
+          ? "fixed"
+          : "relative"
+      }
+      top={
+        fixedTop && "0"
+      }
+      bottom={
+        fixedBottom && "0"
+      }
+      right={
+        (fixedTop || fixedBottom) && "0"
+      }
+      left={
+        (fixedTop || fixedBottom) && "0"
+      }
       display="flex"
       flexWrap="wrap"
       alignItems="center"
       justifyContent="space-between"
-      bg="#f8f9fa"
       py="0.5rem"
+      zIndex="1030"
       {...props}
     >
       <Container
@@ -36,7 +61,7 @@ export const NavBar: React.FC<NavBarProps> = React.forwardRef(function NavBar(
       >
         {children}
       </Container>
-    </x.nav>
+    </NavBarBox>
   )
 })
 
